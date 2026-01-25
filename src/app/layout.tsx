@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { PT_Sans } from "next/font/google";
 import "./globals.css";
 import ThemeProviders from "./providers/ThemeProvider";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
+import { config } from "../../config";
+import { Providers } from "./components/WagmiProviders"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       
-      <body
+        <body
         className={ptSans.className}
       >
     <ThemeProviders>
@@ -42,6 +46,8 @@ export default function RootLayout({
     </ThemeProviders>
 
       </body>
+
+      
     </html>
   );
 }

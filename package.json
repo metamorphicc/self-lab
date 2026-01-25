@@ -9,8 +9,14 @@
     "poly": "ts-node scripts/scripts.ts"
   },
   "dependencies": {
+    "@metamask/sdk": "^0.33.1",
     "@rainbow-me/rainbowkit": "^2.2.10",
-    "@tanstack/react-query": "^5.90.19",
+    "@solana/wallet-adapter-react": "^0.15.39",
+    "@solana/wallet-adapter-react-ui": "^0.9.39",
+    "@solana/wallet-adapter-wallets": "^0.16.1",
+    "@solana/web3.js": "^1.98.4",
+    "@tanstack/react-query": "^5.90.20",
+    "@walletconnect/ethereum-provider": "^2.23.4",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "framer-motion": "^12.27.5",
@@ -22,8 +28,8 @@
     "react-circular-progressbar": "^2.2.0",
     "react-dom": "19.2.3",
     "react-markdown": "^10.1.0",
-    "viem": "^2.44.4",
-    "wagmi": "^3.3.4"
+    "viem": "^2.45.0",
+    "wagmi": "^3.4.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
