@@ -6,8 +6,8 @@ import ThemeProviders from "./providers/ThemeProvider";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { QueryClient } from "@tanstack/react-query";
 import { config } from "../../config";
-import { Providers } from "./components/WagmiProviders"; 
-
+import { Providers } from "./components/WagmiProviders";
+import { SolanaProvider } from "./providers/SolanaProviders";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,9 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 const ptSans = PT_Sans({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['400', '700'],
-  variable: '--font-pt-sans',
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "700"],
+  variable: "--font-pt-sans",
 });
 
 export const metadata: Metadata = {
@@ -35,19 +35,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      
-        <body
-        className={ptSans.className}
-      >
-    <ThemeProviders>
-      <div id="modal-root"></div>
-        {children}
-    </ThemeProviders>
-
-      </body>
-
-      
-    </html>
+    <Providers>
+      <html lang="en" suppressHydrationWarning>
+        <body className={ptSans.className}>
+          <SolanaProvider>
+            <ThemeProviders>
+              <div id="modal-root"></div>
+              {children}
+            </ThemeProviders>
+          </SolanaProvider>
+        </body>
+      </html>
+    </Providers>
   );
 }

@@ -1,7 +1,16 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { PhantomWalletName } from "@solana/wallet-adapter-phantom";
+import { useConnect, useConnection } from "wagmi";
+import { SolanaBalance } from "../components/SolanaBalance";
 export default function Profile() {
   const router = useRouter();
+  const { select, wallets } = useWallet();
+  const { publicKey, connected } = useWallet();
+  const connection = useConnection();
+  const address = publicKey?.toBase58();
   return (
     <>
       <div className="h-screen ">
@@ -231,11 +240,26 @@ export default function Profile() {
             </div>
           </div>
           <div className="h-90  flex flex-col justify-center border rounded-[30px] shadow-xl mt-5">
-            <div >
-              <p className="py-5 font-bold text-[30px] pl-10">Control Center </p>
+            <div>
+              <p className="py-5 font-bold text-[30px] pl-10">
+                Control Center{" "}
+              </p>
             </div>
-            <div className="h-full flex items-center justify-center">
-                Connect EVM wallet
+            <div className="h-full px-10 ">
+              <ConnectButton />
+              {address && connected ? (
+                <>
+                  <div className="mt-10"><span className="font-bold ">Address Solana:</span> {address} <SolanaBalance/></div>
+                </>
+              ) : (
+                <button onClick={() => {
+
+                    select(PhantomWalletName)
+                  }
+                  } className="mt-10">
+                  Войти через фантом
+                </button>
+              )}
             </div>
           </div>
         </div>

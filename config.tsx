@@ -11,9 +11,9 @@ import { mainnet, polygon, bsc } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactNode, useState } from 'react';
 
-const config = getDefaultConfig({
+export const config = getDefaultConfig({
   appName: 'My Nexus App',
-  projectId: 'YOUR_PROJECT_ID', 
+  projectId: 'e13e463001ded9d009afe24f81de0127', 
   chains: [mainnet, polygon, bsc],
   ssr: true,
 });
