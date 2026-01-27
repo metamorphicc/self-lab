@@ -25,22 +25,22 @@ export default function Home({}) {
                   </div>
                 </li>
                 <li className="w-full justify-center h-20">
-                  <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center">
+                  <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/quests")}>
                     Квесты
                   </div>
                 </li>
                 <li className="w-full justify-center h-20">
-                  <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center">
+                  <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/stats")}>
                     Статистика
                   </div>
                 </li>
                 <li className="w-full justify-center h-20">
-                  <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center">
+                  <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/news")}>
                     Свежие новости
                   </div>
                 </li>
                 <li className="w-full justify-center h-20">
-                  <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center">
+                  <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/settings")}>
                     Настройки
                   </div>
                 </li>
