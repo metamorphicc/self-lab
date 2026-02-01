@@ -1,5 +1,9 @@
 "use client";
 
+
+
 export default function Quests() {
-  return <div>Settings</div>;
+  return <div>
+
+  </div>;
 }
