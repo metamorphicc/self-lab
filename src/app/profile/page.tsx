@@ -8,6 +8,8 @@ import { SolanaBalance } from "../components/SolanaBalance";
 import Image from "next/image";
 import { ExpBar } from "../components/levelUp";
 import { useAccount, useBalance } from "wagmi";
+import GetTokens from "../quests/GetTokens";
+import EthAddress from "../components/ethAddress";
 
 export default function Profile() {
   const router = useRouter();
@@ -308,7 +310,9 @@ export default function Profile() {
               <ConnectButton />
               {address && isConnected ? (
                 <>
-                  {/* <div>balance: {balanceETH.data?.decimals}</div> */}
+                  <div>address EVM: {address}</div>
+                  <EthAddress address={address}>
+                  </EthAddress>
                 </>
               ) : (
                 <div></div>
@@ -317,7 +321,7 @@ export default function Profile() {
                 <>
                   <div className="mt-10">
                     <span className="font-bold ">Address Solana:</span>{" "}
-                    {address} <SolanaBalance />
+                    {addressSol} <SolanaBalance />
                   </div>
                 </>
               ) : (

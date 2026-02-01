@@ -1,70 +1,54 @@
 "use client";
+import { useState, useEffect } from "react";
+import GetTokens from "../quests/GetTokens";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-export default function Quests() {
+export default function Stats() {
+  const router  = useRouter()
+  const [balance, setBalance] = useState();
+  const [logo, setLogo] = useState();
+  useEffect(() => {
+    async function res() {
+      const row: any = await GetTokens(
+        "0x91E43809198196aE5011568d3d412A034BFb1234"
+      );
+      setBalance(row.result[0].balance_formatted);
+      setLogo(row.result[0].logo);
+    }
+    res();
+  }, []);
+  console.log(balance);
   return (
-      <>
-        <div className="h-screen w-screen">
-          <div className="px-7 flex items-start justify-between">
-            <div className="shadow-xl h-screen bg-black w-[300px]">
-              <div className="flex items-center gap-3 justify-center flex-col mt-6">
-                <h1>Morph</h1> <span>1lvl</span>
+    <>
+      <div className="h-screen w-screen">
+        <div className="px-7 flex items-center justify-center h-full">
+
+          <div className="border h-full w-1/2">
+        <button onClick={() => router.replace("/home")}>go back</button>
+
+            <div className="px-5 py-10">
+              <div>
+                {balance ? (
+                  <div className="flex gap-2">
+                    <p>[0x91E4...] Polygon Баланс:</p>{" "}
+                    <Image
+                      src={logo!}
+                      width={25}
+                      height={20}
+                      alt="asd"
+                      className="ml-2"
+                    ></Image>{" "}
+                    {balance}
+                  </div>
+                ) : (
+                  <div>Loading...</div>
+                )}
               </div>
-              <div className="mt-10">
-                <ul className="flex flex-col  items-center gap-3">
-                  <li className="w-full justify-center h-20">
-                    <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/profile")}>
-                      Профиль
-                    </div>
-                  </li>
-                  <li className="w-full justify-center h-20">
-                    <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/quests")}>
-                      Квесты
-                    </div>
-                  </li>
-                  <li className="w-full justify-center h-20">
-                    <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/stats")}>
-                      Статистика
-                    </div>
-                  </li>
-                  <li className="w-full justify-center h-20">
-                    <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/news")}>
-                      Свежие новости
-                    </div>
-                  </li>
-                  <li className="w-full justify-center h-20">
-                    <div className="cursor-pointer flex justify-center h-full hover:bg-zinc-700 transition items-center" onClick={() => router.push("/settings")}>
-                      Настройки
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="shadow-xs items-center justify-center flex h-screen">
-              <div className="w-270 h-160 flex">
-                <div className="w-1/2 ">
-                  <div className="border w-full h-1/2 flex items-center justify-center flex-col gap-3 transform -translate-x-7 -translate-y-7">
-                    <p>Выполнено квестов: {3}</p>
-                    <p>EXP: {4049}</p>
-                  </div>
-                  <div className="border w-full h-1/2 flex items-center justify-center -translate-x-7 translate-y-7">
-                    <div>quests</div>
-                  </div>
-                </div>
-                <div className="w-1/2">
-                  <div className="border w-full h-1/2 flex items-center justify-center translate-x-7 -translate-y-7">
-                    <div>News</div>
-                  </div>
-                  <div className="border w-full h-1/2 flex items-center justify-center translate-x-7 translate-y-7">
-                    <div>еще какая то залопу</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="shadow-xs bg-black">
-              незнаю что вьебать сюда так что <p>пусть пока так постоит</p>
             </div>
           </div>
         </div>
-      </>
-    );
+      </div>
+    </>
+  );
 }

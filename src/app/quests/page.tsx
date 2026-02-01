@@ -16,7 +16,6 @@ export default function Quests() {
     }
     res();
   }, []);
-  console.log(balance)
   return (
     <>
       <div>{balance ? <div className="flex gap-2">Баланс: <Image src={logo!} width={25} height={20} alt="asd" className="ml-2"></Image> {balance}</div> : <div>Loading...</div>}</div>

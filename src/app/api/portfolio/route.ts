@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 export async function GET(prop: Request) {
     const {searchParams} = new URL(prop.url);
         const address = searchParams.get("address")
-    console.log(address)
     const api_key = process.env.API_KEY_COVALENT || ""
     const response = await fetch(`https://deep-index.moralis.io/api/v2.2/wallets/${address}/tokens?chain=${"0x89"}`, {
         method: 'GET',
@@ -13,7 +12,6 @@ export async function GET(prop: Request) {
           'X-API-Key': api_key
         }
       });
-    console.log(response)
 
     const rowRow = await response.json().catch(() => {console.log("error at portfolio")});
     return NextResponse.json(rowRow)
